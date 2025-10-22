@@ -4,11 +4,6 @@ import json
 
 
 URL = "https://jobstream.api.jobtechdev.se/snapshot"
-occupation_fields = {
-    "Data/IT": "apaJ_2ja_LuF",
-    "Transport, distribution, lager": "ASGV_zcE_bWf",
-    "Hälso- och sjukvård": "NYW6_mP6_vwf",
-}
 HEADERS = {"accept": "application/json"}
 
 
