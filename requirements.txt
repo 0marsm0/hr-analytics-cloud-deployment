@@ -1,0 +1,9 @@
+dlt[duckdb] 
+requests
+dagster
+dagster-dlt
+dagster-dbt
+dagster-webserver
+dbt-duckdb
+streamlit
+pandas
