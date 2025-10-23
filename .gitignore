@@ -219,4 +219,7 @@ target/
 dbt_packages/
 logs/
 
+*.duckdb
+*.db
+data_warehouse/*.duckdb
 data_warehouse/job_ads.duckdb
