@@ -1,6 +1,5 @@
 sources:
-    - name: jobtech_analysis
-      schema: staging
-      tables:
-        - name: stg_ads
-          identifier: all_jobs
+  - name: jobtech_analysis
+    schema: jobtech_raw
+    tables:
+      - name: all_jobs

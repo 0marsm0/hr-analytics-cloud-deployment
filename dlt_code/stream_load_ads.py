@@ -17,7 +17,7 @@ def _get_ads(params):
 @dlt.resource(table_name="all_jobs", write_disposition="merge", primary_key="id")
 def stream_ads_resource(
     publication_date_bookmark=dlt.sources.incremental(
-        cursor_column="publication_date",
+        cursor_path="publication_date",
         initial_value=(
             datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
             - timedelta(days=7)

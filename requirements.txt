@@ -139,3 +139,4 @@ watchdog==6.0.0
 wcwidth==0.2.13
 win-precise-time==1.4.2
 zipp==3.23.0
+ijson
