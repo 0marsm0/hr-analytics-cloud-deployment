@@ -15,7 +15,7 @@ def _get_ads():
     return response.raw
 
 
-@dlt.resource(table_name="all_jobs", write_disposition="merge", primary_key="id")
+@dlt.resource(table_name="job_ads", write_disposition="merge", primary_key="id")
 def snapshot_ads_resource():
     ads_stream = ijson.items(_get_ads(), "item")
     try:

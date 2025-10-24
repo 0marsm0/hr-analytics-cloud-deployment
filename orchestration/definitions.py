@@ -22,7 +22,7 @@ dlt_resource = DagsterDltResource()
     dlt_source=snapshot_ads_source(),
     dlt_pipeline=dlt.pipeline(
         pipeline_name="snapshot_ads",
-        dataset_name="jobtech_raw",
+        dataset_name="staging",
         destination=dlt.destinations.duckdb(credentials=db_path),
     ),
 )
@@ -34,7 +34,7 @@ def dlt_snapshot_asset(context: dg.AssetExecutionContext, dlt: DagsterDltResourc
     dlt_source=stream_ads_source(),
     dlt_pipeline=dlt.pipeline(
         pipeline_name="stream_ads",
-        dataset_name="jobtech_raw",
+        dataset_name="staging",
         destination=dlt.destinations.duckdb(credentials=db_path),
     ),
 )

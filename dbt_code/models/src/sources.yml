@@ -1,5 +1,8 @@
 sources:
-  - name: jobtech_analysis
-    schema: jobtech_raw
-    tables:
-      - name: all_jobs
+    - name: jobtech_analysis
+      schema: staging
+      tables:
+        - name: job_ads
+          meta:
+            dagster:
+              asset_key: ['dlt_snapshot_ads_source_snapshot_ads_resource']
