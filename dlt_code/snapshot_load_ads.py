@@ -4,9 +4,10 @@ import json
 import ijson
 from ijson.common import IncompleteJSONError
 
-
 URL = "https://jobstream.api.jobtechdev.se/snapshot"
 HEADERS = {"accept": "application/json"}
+
+# dlt.config["load.truncate_staging_dataset"] = True
 
 
 def _get_ads():
