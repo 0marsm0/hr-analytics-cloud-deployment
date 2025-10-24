@@ -1,4 +1,4 @@
-with stg_job_ads as (select * from {{ source('jobtech_analysis', 'all_jobs') }})
+with stg_job_ads as (select * from {{ source('jobtech_analysis', 'job_ads') }})
 select
     id, -- the thrre coulmns above will all make auxilliary_attributes_id and job_details_id
     employer__workplace,
