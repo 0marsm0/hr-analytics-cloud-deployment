@@ -12,6 +12,6 @@ select
     workplace_address__municipality as workplace_city,
     workplace_address__country as workplace_country
 from stg_job_ads
-where occupation_field__concept_id in ["apaJ_2ja_LuF", "ASGV_zcE_bWf", "NYW6_mP6_vwf"]
+where occupation_field__concept_id in ('apaJ_2ja_LuF', 'ASGV_zcE_bWf', 'NYW6_mP6_vwf')
     
     
