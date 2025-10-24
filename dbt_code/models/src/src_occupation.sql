@@ -1,5 +1,5 @@
 with stg_job_ads as (
-    select * from {{ source('jobtech_analysis', 'all_jobs') }}
+    select * from {{ source('jobtech_analysis', 'job_ads') }}
 )
 
 select distinct 
