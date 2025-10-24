@@ -13,4 +13,4 @@ select
     scope_of_work__min as scope_of_work_min,
     scope_of_work__max as scope_of_work_max
 from stg_job_ads
-where occupation_field__concept_id in ["apaJ_2ja_LuF", "ASGV_zcE_bWf", "NYW6_mP6_vwf"]
+where occupation_field__concept_id in ('apaJ_2ja_LuF', 'ASGV_zcE_bWf', 'NYW6_mP6_vwf')
