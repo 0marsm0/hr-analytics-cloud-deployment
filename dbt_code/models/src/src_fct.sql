@@ -5,8 +5,7 @@ select
     workplace_address__municipality, -- will be used as employer_id
     occupation__label, -- will be used as occupation_id
     number_of_vacancies as vacancies,
-    relevance,
     application_deadline,
     publication_date
 from stg_job_ads
-where occupation_field__concept_id in ["apaJ_2ja_LuF", "ASGV_zcE_bWf", "NYW6_mP6_vwf"]
+where occupation_field__concept_id in ('apaJ_2ja_LuF', 'ASGV_zcE_bWf', 'NYW6_mP6_vwf')
