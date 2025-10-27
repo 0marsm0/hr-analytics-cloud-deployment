@@ -1,0 +1,9 @@
+data_warehouse/
+
+.venv/
+
+__pycache__/
+*.pyc
+
+*/target/
+*/dbt_packages/
