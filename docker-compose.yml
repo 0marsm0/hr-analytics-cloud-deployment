@@ -1,0 +1,21 @@
+services:
+  dwh_pipeline:
+    build:
+      context: .
+      dockerfile: dockerfile.dwh
+    environment:
+      - DBT_PROFILES_DIR=/pipeline/dbt_code
+    volumes:
+      - ${HOME}/.dbt/profiles.yml:/pipeline/profiles.yml:ro
+      - ./data_warehouse:/data_warehouse
+    ports:
+      - "3000:3000"
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: dockerfile.dashboard
+    volumes:
+      - ./data_warehouse:/data_warehouse:ro
+    ports:
+      - "8501:8501"
