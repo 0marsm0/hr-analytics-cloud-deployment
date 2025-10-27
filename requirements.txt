@@ -11,6 +11,7 @@ dagster-webserver    # For the Dagit UI
 streamlit            # For the dashboard application
 pandas               # Often used by Streamlit/DuckDB for dataframes
 plotly
+matplotlib
 # pyarrow            # Often good for performance with pandas/duckdb, keep if needed
 
 # API interaction & parsing
@@ -20,3 +21,4 @@ python-dotenv        # For managing secrets (.env files)
 
 # Platform-specific (optional, needed by dlt on Windows)
 win-precise-time ; sys_platform == 'win32'
+

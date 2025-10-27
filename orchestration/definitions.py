@@ -7,24 +7,42 @@ from dagster import define_asset_job, ScheduleDefinition, AssetSelection
 from dlt_code.snapshot_load_ads import snapshot_ads_source
 from dlt_code.stream_load_ads import stream_ads_source
 
-# import sys
+import sys
 import os
 
 # project_root = Path(__file__).parents[1]
 # sys.path.insert(0, str(project_root))
 # db_path = str(project_root / "data_warehouse/job_ads.duckdb")
-db_path = "/data_warehouse/job_ads.duckdb"
+
+
+# db_path = "/data_warehouse/job_ads.duckdb"
 
 dlt_resource = DagsterDltResource()
 
-dbt_project_dir = "/pipeline/"
-default_dbt_path = Path.home() / ".dbt"
-dbt_profiles_dir = os.getenv("DBT_PROFILES_DIR", default=default_dbt_path)
+# dbt_project_dir = "/pipeline/"
+# default_dbt_path = Path.home() / ".dbt"
+# dbt_profiles_dir = os.getenv("DBT_PROFILES_DIR", default=default_dbt_path)
+
+
+
+if os.path.exists("/pipline"):  
+    project_root = Path("/pipline")
+else:  
+    project_root = Path(__file__).parents[1]
+
+sys.path.insert(0, str(project_root))
+db_path = str(project_root / "data_warehouse/job_ads.duckdb")
+
+dbt_project_dir = str(project_root / "dbt_code")
+dbt_profiles_dir = "/root/.dbt" if os.path.exists("/app") else str(Path.home() / ".dbt")
+
+
 
 dbt_project = DbtProject(project_dir=dbt_project_dir, profiles_dir=dbt_profiles_dir)
 dbt_resource = DbtCliResource(
     project_dir=dbt_project_dir, profiles_dir=dbt_profiles_dir
 )
+
 
 
 @dlt_assets(
