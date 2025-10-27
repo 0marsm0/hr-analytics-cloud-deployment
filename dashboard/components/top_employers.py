@@ -11,8 +11,8 @@ def get_top_employers(table):
                                 {table}
                             """)
 
-    df_top = df_jobs.groupby('EMPLOYER_NAME', as_index=False)['VACANCIES'].sum()
-    df_top = df_top.sort_values(by='VACANCIES', ascending=False).head(10)
+    df_top = df_jobs.groupby('employer_name', as_index=False)['vacancies'].sum()
+    df_top = df_top.sort_values(by='vacancies', ascending=False).head(10)
     return df_top
 
 def show_top_employers(table='mart_main'):
@@ -21,9 +21,9 @@ def show_top_employers(table='mart_main'):
 
     fig = px.bar(
         df_top,
-        x='EMPLOYER_NAME',
-        y='VACANCIES',
-        text='VACANCIES'
+        x='employer_name',
+        y='vacancies',
+        text='vacancies'
     )
     fig.update_traces(
         textposition='outside',

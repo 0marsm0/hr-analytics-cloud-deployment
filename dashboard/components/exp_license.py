@@ -131,13 +131,13 @@ def create_pie_chart(data, column_name, title):
 
 def show_exp_data(table):
     df = get_job_list(query=f"""SELECT * FROM {table}""")
-    fig = create_pie_chart(df, 'EXPERIENCE_REQUIRED', "Experience Required")
+    fig = create_pie_chart(df, 'experience_required', "Experience Required")
     st.plotly_chart(fig, use_container_width=True)
 
 
 def show_license_data(table):
     df = get_job_list(query=f"""SELECT * FROM {table}""")
-    fig = create_pie_chart(df, 'DRIVING_LICENSE_REQUIRED', "Driving License Required")
+    fig = create_pie_chart(df, 'driving_license_required', "Driving License Required")
     st.plotly_chart(fig, use_container_width=True)
 
 
