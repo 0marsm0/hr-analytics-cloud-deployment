@@ -16,7 +16,7 @@ def occupation_chart(table="mart_main"):
     
     fig, ax = plt.subplots(1)
 
-    ax.barh(df["OCCUPATION"], df["TOTAL_VACANCIES"], color="#b07cf4")
+    ax.barh(df["occupation"], df["total_vacancies"], color="#b07cf4")
     ax.invert_yaxis()
 
     ax.set_xlabel("Antal lediga jobb")
@@ -42,7 +42,7 @@ def occupation_chart(table="mart_main"):
     ax.tick_params(axis='y', which='both', length=0)
     ax.tick_params(axis='x', which='both', length=0)
     
-    for i, v in enumerate(df["TOTAL_VACANCIES"]):
+    for i, v in enumerate(df["total_vacancies"]):
         ax.text(v + 5, i, str(v), va='center', fontsize=10)
     
     fig.tight_layout()

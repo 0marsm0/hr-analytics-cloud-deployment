@@ -37,10 +37,10 @@ def create_map(table="mart_main", occupation=None):
    # log_vacancies = np.log(df["TOTAL_VACANCIES"] + 1)
    # z_values = np.sqrt(df["TOTAL_VACANCIES"])
 
-    z_values = df["TOTAL_VACANCIES"]
+    z_values = df["total_vacancies"]
  
     matched_names = []
-    for region in df["WORKPLACE_REGION"]:
+    for region in df["workplace_region"]:
         if region is None or region == "":  
             matched_names.append("")
             continue
@@ -53,7 +53,7 @@ def create_map(table="mart_main", occupation=None):
     
     region_ids = [region_codes.get(name, "") for name in matched_names]
     
-    total_vacancies = df["TOTAL_VACANCIES"].sum()
+    total_vacancies = df["total_vacancies"].sum()
  
 
     fig = go.Figure(
@@ -65,10 +65,10 @@ def create_map(table="mart_main", occupation=None):
             featureidkey="properties.l_id", 
             colorscale="Oranges",
             zmin = 0,
-            zmax = df["TOTAL_VACANCIES"].max(),
+            zmax = df["total_vacancies"].max(),
             showscale=True,  
-            customdata=df["TOTAL_VACANCIES"],
-            text=df["WORKPLACE_REGION"],
+            customdata=df["total_vacancies"],
+            text=df["workplace_region"],
           
             marker_line_width=0.3,
         )

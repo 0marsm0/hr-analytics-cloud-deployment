@@ -83,12 +83,12 @@ def local_css(file_name):
 
 local_css("styles.css")
 
-chooser = ["Alla områden", "Installation, drift, underhåll", "Kropps- och skönhetsvård", "Kultur, media, design"]
+chooser = ["Alla områden", "Data IT", "Transport, distribution, lager", "Hälso- och sjukvård"]
 mart_schema = {
-    "Alla områden": "mart_main", 
-    "Installation, drift, underhåll": "mart_idu",
-    "Kropps- och skönhetsvård": "mart_ks",
-    "Kultur, media, design": "mart_kmd"
+    "Alla områden": "marts.mart_main", 
+    "Data IT": "marts.mart_it",
+    "Transport, distribution, lager": "marts.mart_log",
+    "Hälso- och sjukvård": "marts.mart_med"
 }
 
 def dashboard_page():
@@ -112,19 +112,19 @@ def dashboard_page():
         option = st.selectbox("Occupation Field", chooser)
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # Заголовок
+
     st.markdown('<h1 class="dashboard-title">📊 Employment Analytics Dashboard</h1>', unsafe_allow_html=True)
 
     # KPI Cards
     df = get_job_list(query=f"SELECT * FROM {mart_schema[option]}")
     total_vacancies = len(df)
-    today_vacancies = df[df['PUBLICATION_DATE'] == df['PUBLICATION_DATE'].max()].shape[0] if "PUBLICATION_DATE" in df else 0
-    exp_required = df[df['EXPERIENCE_REQUIRED'].isin([True, 1])].shape[0]
-    license_required = df[df['DRIVING_LICENSE_REQUIRED'].isin([True, 1])].shape[0]
+    #today_vacancies = df[df['publication_date'] == df['publication_date'].max()].shape[0] if "publication_date" in df else 0
+    exp_required = df[df['experience_required'].isin([True, 1])].shape[0]
+    license_required = df[df['driving_license_required'].isin([True, 1])].shape[0]
 
-    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    kpi1, kpi3, kpi4 = st.columns(3)
     kpi1.metric("Total Vacancies", f"{total_vacancies:,}")
-    kpi2.metric("Today’s Vacancies", f"{today_vacancies:,}")
+    #kpi2.metric("Today’s Vacancies", f"{today_vacancies:,}")
     kpi3.metric("With Experience", f"{exp_required:,}")
     kpi4.metric("With License", f"{license_required:,}")
 
