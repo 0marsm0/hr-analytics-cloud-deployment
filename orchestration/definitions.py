@@ -59,19 +59,18 @@ def dbt_models(context: dg.AssetExecutionContext, dbt: DbtCliResource):
 
 snapshot_job = define_asset_job(
     "snapshot_job",
-    selection=AssetSelection.assets(dlt_snapshot_asset),
+    selection=AssetSelection.assets(dlt_snapshot_asset).downstream(),
 )
 
-stream_job = define_asset_job(
-    "stream_job",
-    selection=AssetSelection.assets(dlt_stream_asset).downstream(),
-)
+# stream_job = define_asset_job(
+#     "stream_job",
+#     selection=AssetSelection.assets(dlt_stream_asset).downstream(),
+# )
 
-daily_schedule = ScheduleDefinition(job=stream_job, cron_schedule="@daily")
+daily_schedule = ScheduleDefinition(job=snapshot_job, cron_schedule="@daily")
 
 defs = dg.Definitions(
-    assets=[dlt_snapshot_asset, dlt_stream_asset, dbt_models],
+    assets=[dlt_snapshot_asset, dbt_models],
     resources={"dlt": dlt_resource, "dbt": dbt_resource},
     schedules=[daily_schedule],
-    jobs=[snapshot_job],
 )
