@@ -4,18 +4,30 @@ services:
       context: .
       dockerfile: dockerfile.dwh
     environment:
-      - DBT_PROFILES_DIR=/pipeline/dbt_code
+      - DBT_PROFILES_DIR=/root/.dbt
     volumes:
-      - ${HOME}/.dbt/profiles.yml:/pipeline/profiles.yml:ro
-      - ./data_warehouse:/data_warehouse
+     # - ${HOME}/.dbt/profiles.yml:/pipeline/profiles.yml:ro
+      - ${HOME}/.dbt:/root/.dbt:ro
+      - ./data_warehouse:/pipeline/data_warehouse
+      - ./dlt_code:/pipeline/dlt_code
+      - ./dbt_code:/pipeline/dbt_code
+      - ./orchestration:/pipeline/orchestration
     ports:
       - "3000:3000"
+    working_dir: /pipeline
+
 
   dashboard:
     build:
       context: .
       dockerfile: dockerfile.dashboard
     volumes:
-      - ./data_warehouse:/data_warehouse:ro
+      - ./data_warehouse:/pipeline/data_warehouse:ro
+      - ./dashboard:/pipeline/dashboard
     ports:
       - "8501:8501"
+    working_dir: /pipeline
+    depends_on:
+      - dwh_pipeline
+
+

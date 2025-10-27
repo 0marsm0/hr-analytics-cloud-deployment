@@ -1,11 +1,11 @@
 FROM python:3.11-slim
 
-ENV DUCKDB_PATH=/data_warehouse/job_ads.duckdb
+ENV DUCKDB_PATH=/pipeline/data_warehouse/job_ads.duckdb
 
 WORKDIR /dashboard
 
-COPY dashboard/ /dashboard/
+COPY requirements.txt .
 
-RUN pip install streamlit duckdb pandas
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["streamlit", "run", "dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "dashboard/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
