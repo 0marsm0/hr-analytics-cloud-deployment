@@ -1,5 +1,5 @@
 with 
-    fct_table as (select * from {{ref('fct_table')}}),
+    fct_job_ads as (select * from {{ref('fct_job_ads')}}),
     dim_employer as (select * from {{ref('dim_employer')}}) ,
     dim_auxilliary as (select * from {{ref('dim_auxilliary_attributes')}}),
     dim_job_details as (select * from {{ref('dim_job_details')}}),
@@ -7,9 +7,9 @@ with
 
 
 select
-    do.occupation,
-    do.occupation_field,
-    do.occupation_group,
+    occ.occupation,
+    occ.occupation_field,
+    occ.occupation_group,
     dj.headline,
     dj.description,
     dj.employment_type,
@@ -29,9 +29,9 @@ select
     ft.application_deadline,
     ft.publication_date
 from
-    fct_table ft
+    fct_job_ads ft
 left join dim_employer de ON de.employer_id = ft.employer_id
 left join dim_auxilliary da ON da.auxilliary_attribute_id = ft.auxilliary_attribute_id
 left join dim_job_details dj ON dj.job_details_id = ft.job_details_id
-left join dim_occupation do ON do.occupation_id = ft.occupation_id
+left join dim_occupation occ ON occ.occupation_id = ft.occupation_id
 where occupation_field = 'Hälso- och sjukvård'
