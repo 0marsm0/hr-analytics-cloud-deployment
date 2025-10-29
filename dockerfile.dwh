@@ -1,7 +1,13 @@
 FROM python:3.11
-ENV DBT_PROFILES_DIR=/pipeline
 WORKDIR /pipeline
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+
 COPY . .
+COPY .dbt/ /root/.dbt/
+
+ENV DBT_PROFILES_DIR=/root/.dbt
+ENV DUCKDB_PATH=/mnt/data/job_ads.duckdb
+
 CMD ["dagster", "dev", "-f", "orchestration/definitions.py", "-h", "0.0.0.0", "-p", "3000"]
