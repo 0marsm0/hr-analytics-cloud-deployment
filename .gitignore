@@ -225,3 +225,5 @@ data_warehouse/*.duckdb
 data_warehouse/job_ads.duckdb
 
 .dbt/logs
+
+tmp_az_cli.txttmp_az_cli.txt
