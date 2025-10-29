@@ -25,19 +25,16 @@ dlt_resource = DagsterDltResource()
 
 
 
-if os.path.exists("/pipeline"):  
-    project_root = Path("/pipeline")
+if os.path.exists("/pipline"):  
+    project_root = Path("/pipline")
 else:  
     project_root = Path(__file__).parents[1]
 
 sys.path.insert(0, str(project_root))
-#db_path = str(project_root / "data_warehouse/job_ads.duckdb")
-db_path = os.getenv("DUCKDB_PATH", str(project_root / "data_warehouse/job_ads.duckdb"))
+db_path = str(project_root / "data_warehouse/job_ads.duckdb")
 
-#dbt_project_dir = str(project_root / "dbt_code")
-#dbt_profiles_dir = "/root/.dbt" if os.path.exists("/app") else str(Path.home() / ".dbt")
 dbt_project_dir = str(project_root / "dbt_code")
-dbt_profiles_dir = os.getenv("DBT_PROFILES_DIR", str(Path.home() / ".dbt"))
+dbt_profiles_dir = "/root/.dbt" if os.path.exists("/app") else str(Path.home() / ".dbt")
 
 
 

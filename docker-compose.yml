@@ -1,21 +1,19 @@
 services:
   dwh_pipeline:
-    platform: linux/amd64
     build:
       context: .
       dockerfile: dockerfile.dwh
-   # environment:
-   #   - DBT_PROFILES_DIR=/root/.dbt
-   # volumes:
-   #  # - ${HOME}/.dbt/profiles.yml:/pipeline/profiles.yml:ro
-   #   - ${HOME}/.dbt:/root/.dbt:ro
-   #   - ./data_warehouse:/pipeline/data_warehouse
-   #   - ./dlt_code:/pipeline/dlt_code
-   #   - ./dbt_code:/pipeline/dbt_code
-   #   - ./orchestration:/pipeline/orchestration
+    environment:
+      - DBT_PROFILES_DIR=/root/.dbt
+    volumes:
+     # - ${HOME}/.dbt/profiles.yml:/pipeline/profiles.yml:ro
+      - ${HOME}/.dbt:/root/.dbt:ro
+      - ./data_warehouse:/pipeline/data_warehouse
+      - ./dlt_code:/pipeline/dlt_code
+      - ./dbt_code:/pipeline/dbt_code
+      - ./orchestration:/pipeline/orchestration
     ports:
       - "3000:3000"
-    image: aihrnalyticsdev-gyhaa9dpdnekfkf2.azurecr.io/hr-pipeline:latest
     working_dir: /pipeline
 
 
@@ -23,9 +21,11 @@ services:
     build:
       context: .
       dockerfile: dockerfile.dashboard
+    volumes:
+      - ./data_warehouse:/pipeline/data_warehouse:ro
+      - ./dashboard:/pipeline/dashboard
     ports:
       - "8501:8501"
-    image: aihrnalyticsdev-gyhaa9dpdnekfkf2.azurecr.io/dashboard:latest
     working_dir: /pipeline
     depends_on:
       - dwh_pipeline

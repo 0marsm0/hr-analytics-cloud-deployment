@@ -1,15 +1,11 @@
 FROM python:3.11-slim
 
-WORKDIR /pipeline
+ENV DUCKDB_PATH=/pipeline/data_warehouse/job_ads.duckdb
+
+WORKDIR /dashboard
 
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY dashboard/ /pipeline/dashboard/
-
-ENV DUCKDB_PATH=/mnt/data/job_ads.duckdb
-
-ENV DUCKDB_PATH=/pipeline/data_warehouse/job_ads.duckdb
 
 CMD ["streamlit", "run", "dashboard/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
