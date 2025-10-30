@@ -5,9 +5,9 @@ En automatiserad plattform för analys av jobbannonser med ETL-pipeline och inte
 ## Syfte
 Plattformen löser följande problem:
 
-Snabb marknadsanalys - Spåra trender inom IT-rekrytering i realtid
-Data-drivna beslut - Hjälp HR-specialister och kandidater med aktuell marknadsdata
-Automatisering - Eliminera manuell datainsamling och analys
+- Snabb marknadsanalys - Spåra trender inom IT-rekrytering i realtid
+- Data-drivna beslut - Hjälp HR-specialister och kandidater med aktuell marknadsdata
+- Automatisering - Eliminera manuell datainsamling och analys
 
 
 ## Arkitektur
