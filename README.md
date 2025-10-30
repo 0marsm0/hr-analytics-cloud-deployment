@@ -12,7 +12,7 @@ Plattformen löser följande problem:
 
 ## Arkitektur
 ```
-API → Python ETL → DuckDB → dbt → Streamlit Dashboard
+Arbetsförmedlingen API → Python ETL → DuckDB → dbt → Streamlit Dashboard
    
               ↓
          Dagster (orkestrering)
