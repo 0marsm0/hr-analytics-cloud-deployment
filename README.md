@@ -1,6 +1,6 @@
 # HR Analytics Cloud Platform 
 ## Projektöversikt
-En automatiserad plattform för analys av jobbannonser med ETL-pipeline och interaktiv dashboard, deployad i Azure Cloud.
+En automatiserad plattform för analys av jobbannonser med ETL-pipeline och interaktiv dashboard, deployed to Azure Cloud.
 
 ## Syfte
 Plattformen löser följande problem:
