@@ -16,7 +16,7 @@ API → Python ETL → DuckDB → dbt → Streamlit Dashboard
          Dagster (orkestrering)
               ↓
          Azure Container Instances
-```
+
 
 ### Komponenter:
 
@@ -48,7 +48,7 @@ API → Python ETL → DuckDB → dbt → Streamlit Dashboard
 ---
 
 ## 📁 Projektstruktur
-```
+
 hr-analytics-cloud-deployment/
 ├── terraform/                 # Infrastructure as Code
 │   ├── main.tf               # Azure resources definition
@@ -116,7 +116,7 @@ bashcd terraform
 # Avkommentera container blocks i main.tf
 # Applicera igen för att skapa containers
 terraform apply
-```
+
 
 ⏳ **Väntetid:** 2-3 minuter
 
@@ -125,9 +125,9 @@ terraform apply
 ## 🌐 Åtkomst till Tjänster
 
 ### Dagster UI (ETL Pipeline):
-```
+
 http://dwh-pipeline-dev.swedencentral.azurecontainer.io:3000
-```
+
 
 **Användning:**
 1. Öppna Dagster UI
@@ -136,7 +136,7 @@ http://dwh-pipeline-dev.swedencentral.azurecontainer.io:3000
 4. Övervaka körningen i realtid
 
 ### Streamlit Dashboard:
-```
+
 http://dashboard-dev.swedencentral.azurecontainer.io:8501
 Funktioner:
 
